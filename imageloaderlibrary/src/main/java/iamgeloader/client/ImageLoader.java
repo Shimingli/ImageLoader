@@ -282,58 +282,58 @@ public class ImageLoader implements IImageLoaderClient {
     }
 
     @Override
-    public void displayImageInResource(Context context, int resId, String completeResName, ImageView imageView) {
+    public void displayImageInResource(Context context, int resId,  ImageView imageView) {
         if (client != null) {
-            client.displayImageInResource(context, resId, completeResName, imageView);
+            client.displayImageInResource(context, resId,  imageView);
         }
     }
 
     @Override
-    public void displayImageInResource(Fragment fragment, int resId, String completeResName, ImageView imageView) {
+    public void displayImageInResource(Fragment fragment, int resId,  ImageView imageView) {
         if (client != null) {
-            client.displayImageInResource(fragment, resId, completeResName, imageView);
+            client.displayImageInResource(fragment, resId,  imageView);
         }
     }
 
     @Override
-    public void displayImageInResource(Context context, int resId, String completeResName, ImageView imageView, IBitmapTransformation... transformations) {
+    public void displayImageInResource(Context context, int resId, ImageView imageView, IBitmapTransformation... transformations) {
         if (client != null) {
-            client.displayImageInResource(context, resId, completeResName, imageView, transformations);
+            client.displayImageInResource(context, resId, imageView, transformations);
         }
     }
 
     @Override
-    public void displayImageInResource(Fragment fragment, int resId, String completeResName, ImageView imageView, IBitmapTransformation... transformations) {
+    public void displayImageInResource(Fragment fragment, int resId,  ImageView imageView, IBitmapTransformation... transformations) {
         if (client != null) {
-            client.displayImageInResource(fragment, resId, completeResName, imageView, transformations);
+            client.displayImageInResource(fragment, resId, imageView, transformations);
         }
     }
 
     @Override
-    public void displayImageInResource(Context context, int resId, String completeResName, ImageView imageView, int defRes) {
+    public void displayImageInResource(Context context, int resId,  ImageView imageView, int defRes) {
         if (client != null) {
-            client.displayImageInResource(context, resId, completeResName, imageView, defRes);
+            client.displayImageInResource(context, resId, imageView, defRes);
         }
     }
 
     @Override
-    public void displayImageInResource(Fragment fragment, int resId, String completeResName, ImageView imageView, int defRes) {
+    public void displayImageInResource(Fragment fragment, int resId,  ImageView imageView, int defRes) {
         if (client != null) {
-            client.displayImageInResource(fragment, resId, completeResName, imageView, defRes);
+            client.displayImageInResource(fragment, resId, imageView, defRes);
         }
     }
 
     @Override
-    public void displayImageInResource(Context context, int resId, String completeResName, ImageView imageView, int defRes, IBitmapTransformation... transformations) {
+    public void displayImageInResource(Context context, int resId,  ImageView imageView, int defRes, IBitmapTransformation... transformations) {
         if (client != null) {
-            client.displayImageInResource(context, resId, completeResName, imageView, defRes, transformations);
+            client.displayImageInResource(context, resId, imageView, defRes, transformations);
         }
     }
 
     @Override
-    public void displayImageInResource(Fragment fragment, int resId, String completeResName, ImageView imageView, int defRes, IBitmapTransformation... transformations) {
+    public void displayImageInResource(Fragment fragment, int resId,  ImageView imageView, int defRes, IBitmapTransformation... transformations) {
         if (client != null) {
-            client.displayImageInResource(fragment, resId, completeResName, imageView, defRes, transformations);
+            client.displayImageInResource(fragment, resId,  imageView, defRes, transformations);
         }
     }
 

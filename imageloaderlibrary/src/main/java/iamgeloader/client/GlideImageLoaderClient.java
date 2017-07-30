@@ -421,7 +421,7 @@ public class GlideImageLoaderClient implements IImageLoaderClient {
     public void displayImageInResource(Fragment fragment, int resId, ImageView imageView, int defRes) {
         Glide.with(fragment).load(resId).diskCacheStrategy(DiskCacheStrategy.NONE).placeholder(defRes).error(defRes).into(imageView);
     }
-
+    //关心context
     @Override
     public void displayImageInResource(Context context, int resId,  ImageView imageView, int defRes, IBitmapTransformation... transformations) {
         int size = transformations.length;
@@ -430,10 +430,9 @@ public class GlideImageLoaderClient implements IImageLoaderClient {
         for (int i = 0; i < size; i++) {
             glideTransforms[i] = new GlideTransform(transformations[i].getContext(), transformations[i]);
         }
-
         Glide.with(context).load(resId).diskCacheStrategy(DiskCacheStrategy.NONE).placeholder(defRes).error(defRes).transform(glideTransforms).into(imageView);
     }
-
+    //关心fragment
     @Override
     public void displayImageInResource(Fragment fragment, int resId,  ImageView imageView, int defRes, IBitmapTransformation... transformations) {
         int size = transformations.length;
@@ -442,7 +441,6 @@ public class GlideImageLoaderClient implements IImageLoaderClient {
         for (int i = 0; i < size; i++) {
             glideTransforms[i] = new GlideTransform(transformations[i].getContext(), transformations[i]);
         }
-
         Glide.with(fragment).load(resId).diskCacheStrategy(DiskCacheStrategy.NONE).placeholder(defRes).error(defRes).transform(glideTransforms).into(imageView);
     }
 

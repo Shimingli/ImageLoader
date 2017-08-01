@@ -27,8 +27,6 @@ public class CircleBitmapTransformation implements IBitmapTransformation {
 
         int width = (source.getWidth() - size) / 2;
         int height = (source.getHeight() - size) / 2;
-
-
         Bitmap target = Bitmap.createBitmap(size, size, Bitmap.Config.ARGB_8888);
 
         Canvas canvas = new Canvas(target);

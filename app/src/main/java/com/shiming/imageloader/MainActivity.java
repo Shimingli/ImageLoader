@@ -1,5 +1,11 @@
 package com.shiming.imageloader;
 
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.BitmapShader;
+import android.graphics.Canvas;
+import android.graphics.Matrix;
+import android.graphics.Paint;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.ImageView;
@@ -18,6 +24,7 @@ public class MainActivity extends AppCompatActivity {
     private ImageView mImageView_5;
     private ImageView mImageView_6;
     private ImageView mImageView_7;
+    private ImageView mImageView_8;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,15 +40,37 @@ public class MainActivity extends AppCompatActivity {
         //圆角图片
         ImageLoader.getInstance().displayRoundImage(this,"http://imgsrc.baidu.com/imgad/pic/item/267f9e2f07082838b5168c32b299a9014c08f1f9.jpg",mImageView_2,R.mipmap.ic_launcher_round,20);
         //模糊图片
-        ImageLoader.getInstance().displayBlurImage(this,"http://imgsrc.baidu.com/imgad/pic/item/267f9e2f07082838b5168c32b299a9014c08f1f9.jpg",mImageView_3,R.mipmap.ic_launcher_round,20);
+        ImageLoader.getInstance().displayBlurImage(this,"http://imgsrc.baidu.com/imgad/pic/item/267f9e2f07082838b5168c32b299a9014c08f1f9.jpg",mImageView_3,R.mipmap.ic_launcher_round,200);
 
         //本地图片
         ImageLoader.getInstance().displayImageInResource(this,R.mipmap.test,mImageView_4);
-        ImageLoader.getInstance().displayImageInResource(this,R.mipmap.test,mImageView_5,new BlurBitmapTransformation(this,40));
+        ImageLoader.getInstance().displayImageInResource(this,R.mipmap.test,mImageView_5,new BlurBitmapTransformation(this,200));
         ImageLoader.getInstance().displayImageInResource(this,R.mipmap.test,mImageView_6,new CircleBitmapTransformation(this));
-        ImageLoader.getInstance().displayImageInResource(this,R.mipmap.test,mImageView_6,new RoundBitmapTransformation(this,40));
+        ImageLoader.getInstance().displayImageInResource(this,R.mipmap.test,mImageView_7,new RoundBitmapTransformation(this,40));
+        //通过代码实现裁剪为圆形图片
+        drawCicriBitmap();
 
-
+    }
+    private void drawCicriBitmap() {
+        Bitmap source = BitmapFactory.decodeResource(getResources(), R.mipmap.icon);
+        int size = Math.min(source.getWidth(), source.getHeight());
+        int width = (source.getWidth() - size) / 2;
+        int height = (source.getHeight() - size) / 2;
+        Bitmap target = Bitmap.createBitmap(size, size, Bitmap.Config.ARGB_4444);
+        Canvas canvas = new Canvas(target);
+        Paint paint = new Paint();
+//        Call this to create a new shader that will draw with a bitmap.
+        BitmapShader shader = new BitmapShader(source, BitmapShader.TileMode.CLAMP, BitmapShader.TileMode.CLAMP);
+        if (width != 0 || height != 0) {
+            Matrix matrix = new Matrix();
+            matrix.setTranslate(-width, -height);
+            shader.setLocalMatrix(matrix);
+        }
+        paint.setShader(shader);
+        paint.setAntiAlias(true);
+        float r = size / 2f;
+        canvas.drawCircle(r, r, r, paint);
+        mImageView_8.setImageBitmap(target);
     }
 
     private void findView() {
@@ -52,5 +81,6 @@ public class MainActivity extends AppCompatActivity {
         mImageView_5 = (ImageView) findViewById(R.id.image_view_5);
         mImageView_6 = (ImageView) findViewById(R.id.image_view_6);
         mImageView_7 = (ImageView) findViewById(R.id.image_view_7);
+        mImageView_8 = (ImageView) findViewById(R.id.image_view_8);
     }
 }

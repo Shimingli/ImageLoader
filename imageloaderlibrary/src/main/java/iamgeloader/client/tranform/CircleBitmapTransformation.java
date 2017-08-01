@@ -24,7 +24,6 @@ public class CircleBitmapTransformation implements IBitmapTransformation {
     @Override
     public Bitmap transform(Bitmap source, ImageView imageView) {
         int size = Math.min(source.getWidth(), source.getHeight());
-
         int width = (source.getWidth() - size) / 2;
         int height = (source.getHeight() - size) / 2;
         Bitmap target = Bitmap.createBitmap(size, size, Bitmap.Config.ARGB_8888);

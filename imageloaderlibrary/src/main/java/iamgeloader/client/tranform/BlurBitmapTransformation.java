@@ -62,7 +62,6 @@ public class BlurBitmapTransformation implements IBitmapTransformation {
         Bitmap bitmap = source.copy(source.getConfig(), true);
         int w = source.getWidth();
         int h = source.getHeight();
-
         int[] pix = new int[w * h];
 //        像素颜色写入位图
 //        要跳过的像素[ [] ]中的条目数

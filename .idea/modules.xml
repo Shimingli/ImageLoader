@@ -4,8 +4,11 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/ImageLoader.iml" filepath="$PROJECT_DIR$/ImageLoader.iml" />
       <module fileurl="file://$PROJECT_DIR$/ImageLoader.iml" filepath="$PROJECT_DIR$/ImageLoader.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ImageLoader.iml" filepath="$PROJECT_DIR$/ImageLoader.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/imageloaderlibrary/imageloaderlibrary.iml" filepath="$PROJECT_DIR$/imageloaderlibrary/imageloaderlibrary.iml" />
       <module fileurl="file://$PROJECT_DIR$/imageloaderlibrary/imageloaderlibrary.iml" filepath="$PROJECT_DIR$/imageloaderlibrary/imageloaderlibrary.iml" />
       <module fileurl="file://$PROJECT_DIR$/imageloaderlibrary/imageloaderlibrary.iml" filepath="$PROJECT_DIR$/imageloaderlibrary/imageloaderlibrary.iml" />
     </modules>

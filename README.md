@@ -1,5 +1,5 @@
-# ImageLoader
-##不逼逼，先看效果
+# ImageLoader 包含了jni和glide的封装 两个简述地址介绍的合集：JNI：http://www.jianshu.com/p/d142980ad7e3    gilde封装：http://www.jianshu.com/p/9080483bac91  都是这个Demo
+# 不逼逼，先看效果
 1、使用Glide裁剪圆形图片、圆角图片和处理模糊图片
 ![Paste_Image.png](http://upload-images.jianshu.io/upload_images/5363507-78e54509580bcd6a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 2、对本地图片处理的三种效果

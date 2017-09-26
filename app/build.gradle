@@ -10,6 +10,23 @@ android {
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        //ndk编译生成.so文件
+        // 只要是第一次生成了so库的文件，那么以后就不用生成这个文件，记住一定要记住，如果需要生成so文件
+        //需要把外面的目录的jni移动到和mian目录下和Java同级的目录下
+//        ndk {
+//            moduleName "ShimingImageBlur"         //生成的so名字
+//            abiFilters "armeabi", "armeabi-v7a", "x86"  //输出指定三种abi体系结构下的so库。
+//        }
+    }
+    sourceSets.main{
+        jniLibs.srcDirs = ['libs']
+    }
+    sourceSets {
+        main {
+            aidl.srcDirs = ['src/main/java']
+            assets.srcDirs = ['assets']
+            jniLibs.srcDirs = ['libs']
+        }
     }
     buildTypes {
         release {
@@ -17,6 +34,7 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+
 }
 
 dependencies {
@@ -24,8 +42,8 @@ dependencies {
     androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
+    compile project(':imageloaderlibrary')
     compile 'com.android.support:appcompat-v7:25.3.1'
     compile 'com.android.support.constraint:constraint-layout:1.0.2'
     testCompile 'junit:junit:4.12'
-    compile project(':imageloaderlibrary')
 }

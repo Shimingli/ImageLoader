@@ -6,6 +6,7 @@ import android.widget.ImageView;
 
 /**
  * Created by shiming on 2016/10/26.
+ * 处理模糊图片，但是不能达到高斯模糊的效果
  */
 
 
@@ -58,6 +59,13 @@ public class BlurBitmapTransformation implements IBitmapTransformation {
         return context;
     }
 
+    /**
+     * 当设置过大的radius 容易内存溢出
+     * at iamgeloader.client.tranform.BlurBitmapTransformation.blur(BlurBitmapTransformation.java:80)
+     * @param source
+     * @param radius
+     * @return
+     */
     private Bitmap blur(Bitmap source, int radius) {
         Bitmap bitmap = source.copy(source.getConfig(), true);
         int w = source.getWidth();

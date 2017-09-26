@@ -106,6 +106,12 @@ public class ImageLoader implements IImageLoaderClient {
         return null;
     }
 
+    /**
+     * 不是
+     * @param context
+     * @param url
+     * @param listener
+     */
     @Override
     public void getBitmapFromCache(Context context, String url, IGetBitmapListener listener) {
         if (client != null) {

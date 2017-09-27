@@ -8,7 +8,7 @@
 extern "C" {
 #endif
 /*
- * Class:     com_shiming_imageloader_jni_JniUtils
+ * Class:     Java_com_shiming_imageloader_jnitest_JniUtils
  * Method:    blurIntArray
  * Signature: ([IIII)V
  * 可千万要加上 Java_的前缀 ，要不然找不到啊

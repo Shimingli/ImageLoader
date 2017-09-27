@@ -11,13 +11,27 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:text="我是jni实现的高斯模糊,通过网络获取的图片"/>
+        android:text="通过网络获取的图片，jni实现的高斯模糊"/>
+
+    <Button
+        android:id="@+id/btn4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:text="通过网络获取的图片，没有使用jni里的算法实现的高斯模糊，效果差"/>
     <Button
         android:id="@+id/btn3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:text="我是jni实现的高斯模糊,通过sd卡"/>
+        android:text="我是jni实现的高斯模糊,通过本地获取的图片"/>
+    <Button
+        android:id="@+id/btn5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:text="我是没有使用jni里面算法实现的高斯模糊,通过本地获取的图片"/>
+
     <Button
         android:id="@+id/btn2"
         android:layout_width="wrap_content"

@@ -22,11 +22,15 @@
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
-        <activity android:name=".JniImageByNetActivity">
+        <activity android:name=".JniImageByNetAndJniActivity">
         </activity>
         <activity android:name=".ImageLoaderByNetActivity">
         </activity>
-        <activity android:name=".JniImageBySDActivity">
+        <activity android:name=".JniImageBySDAndJniActivity">
+        </activity>
+        <activity android:name=".JniImageByNetNoJniActivity">
+        </activity>
+        <activity android:name=".JniImageBySDNoJniActivity">
         </activity>
     </application>
 </manifest>

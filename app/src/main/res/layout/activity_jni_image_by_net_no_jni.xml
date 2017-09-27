@@ -10,11 +10,11 @@
         android:textColor="#f00"
         android:gravity="center"
         android:textSize="20sp"
-        android:text="我是通过网络获取图片的高斯模糊的效果（调用jni里面的算法）"
+        android:text="我是通过网络获取图片的高斯模糊的效果（没有调用jni）通过java实现的,其实就没有调取jni里面对pix的算法"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"/>
     <ImageView
-        android:id="@+id/image_view_2"
+        android:id="@+id/image_view_1"
         android:layout_width="match_parent"
         android:layout_height="200dp"/>
     <TextView
@@ -22,11 +22,11 @@
         android:textColor="#f00"
         android:gravity="center"
         android:textSize="20sp"
-        android:text="我是原图 "
+        android:text="我是通过网络获取图片原图"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"/>
     <ImageView
-        android:id="@+id/image_view_1"
+        android:id="@+id/image_view_2"
         android:layout_width="match_parent"
         android:layout_height="200dp"/>
 </LinearLayout>

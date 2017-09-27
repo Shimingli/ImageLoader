@@ -16,7 +16,7 @@ public class MainActivity extends AppCompatActivity {
         findViewById(R.id.btn1).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(MainActivity.this,JniImageByNetActivity.class));
+                startActivity(new Intent(MainActivity.this,JniImageByNetAndJniActivity.class));
             }
         });
 
@@ -29,7 +29,19 @@ public class MainActivity extends AppCompatActivity {
         findViewById(R.id.btn3).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(MainActivity.this,JniImageBySDActivity.class));
+                startActivity(new Intent(MainActivity.this,JniImageBySDAndJniActivity.class));
+            }
+        });
+        findViewById(R.id.btn4).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(MainActivity.this,JniImageByNetNoJniActivity.class));
+            }
+        });
+        findViewById(R.id.btn5).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(MainActivity.this,JniImageBySDNoJniActivity.class));
             }
         });
     }

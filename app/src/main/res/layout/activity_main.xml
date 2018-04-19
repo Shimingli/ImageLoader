@@ -38,4 +38,11 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:text="我是加载框架实现的图片处理"/>
+
+    <Button
+        android:id="@+id/btn6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:text="glide最新的封装"/>
 </LinearLayout>

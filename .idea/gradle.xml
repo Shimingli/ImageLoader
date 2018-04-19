@@ -9,6 +9,8 @@
           <set>
             <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/app" />
+            <option value="$PROJECT_DIR$/compresspic" />
+            <option value="$PROJECT_DIR$/imageloader4.7.1" />
             <option value="$PROJECT_DIR$/imageloaderlibrary" />
           </set>
         </option>

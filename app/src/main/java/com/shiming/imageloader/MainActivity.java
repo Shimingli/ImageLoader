@@ -44,6 +44,15 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(new Intent(MainActivity.this,JniImageBySDNoJniActivity.class));
             }
         });
+
+        findViewById(R.id.btn6).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(MainActivity.this,GlideV4DemoActivity.class));
+            }
+        });
+
+
     }
 
 }

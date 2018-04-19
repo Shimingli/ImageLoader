@@ -7,7 +7,6 @@ import android.widget.ImageView;
 
 import com.shiming.imageloader.jnitest.JniUtils;
 
-import iamgeloader.client.ImageLoader;
 
 /**
  * @author shiming
@@ -32,7 +31,7 @@ public class JniImageByNetNoJniActivity extends FragmentActivity{
 
     private void initData() {
         JniUtils.loadBlurImg(this,mUrl,mImageView_1,false);
-        ImageLoader.getInstance().displayImage(this,mUrl,mImageView_2);
+//        ImageLoader.getInstance().displayImage(this,mUrl,mImageView_2);
     }
 
     private void findView() {

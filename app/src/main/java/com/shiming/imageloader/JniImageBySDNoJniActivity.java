@@ -7,7 +7,6 @@ import android.widget.ImageView;
 
 import com.shiming.imageloader.jnitest.JniUtils;
 
-import iamgeloader.client.ImageLoader;
 
 /**
  * @author shiming
@@ -27,7 +26,7 @@ public class JniImageBySDNoJniActivity extends FragmentActivity {
         mImageView2 = (ImageView) findViewById(R.id.image_view_2);
         mImageView.setImageResource(R.mipmap.icon);
         JniUtils.applyBlur(mImageView,false);
-        ImageLoader.getInstance().displayImage(this,R.mipmap.icon,mImageView2);
+//        ImageLoader.getInstance().displayImage(this,R.mipmap.icon,mImageView2);
 
     }
 }

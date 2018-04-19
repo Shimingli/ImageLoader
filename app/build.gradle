@@ -1,12 +1,12 @@
 apply plugin: 'com.android.application'
 
 android {
-    compileSdkVersion 25
+    compileSdkVersion 27
     buildToolsVersion "25.0.2"
     defaultConfig {
         applicationId "com.shiming.imageloader"
         minSdkVersion 15
-        targetSdkVersion 25
+        targetSdkVersion 27
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
@@ -18,7 +18,7 @@ android {
 //            abiFilters "armeabi", "armeabi-v7a", "x86"  //输出指定三种abi体系结构下的so库。
 //        }
     }
-    sourceSets.main{
+    sourceSets.main {
         jniLibs.srcDirs = ['libs']
     }
     sourceSets {
@@ -42,8 +42,12 @@ dependencies {
     androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
-    compile project(':imageloaderlibrary')
-    compile 'com.android.support:appcompat-v7:25.3.1'
+//    compile project(':imageloaderlibrary')
+    compile project(':imageloader4.7.1')
+    //noinspection GradleCompatible
+    compile 'com.android.support:appcompat-v7:27.0.0'
     compile 'com.android.support.constraint:constraint-layout:1.0.2'
     testCompile 'junit:junit:4.12'
+    //依赖图片压缩的 jni
+//    compile project(':compresspic')
 }

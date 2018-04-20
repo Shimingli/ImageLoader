@@ -17,7 +17,8 @@ import com.shiming.imageloader.MyApp;
 
 import java.util.ArrayList;
 
-
+import iamgeloader.client.ImageLoader;
+import iamgeloader.client.listener.IGetBitmapListener;
 
 
 /**
@@ -139,13 +140,13 @@ public class JniUtils {
      * @param imageView
      */
     public static void loadBlurImg(Context context, String url, final ImageView imageView, final boolean flag) {
-//        ImageLoader.getInstance().getBitmapFromCache(context, url, new IGetBitmapListener() {
-//            @Override
-//            public void onBitmap(Bitmap bitmap) {
-//                imageView.setImageBitmap(bitmap);
-//                applyBlur(imageView,flag);
-//            }
-//        });
+        ImageLoader.getInstance().getBitmapFromCache(context, url, new IGetBitmapListener() {
+            @Override
+            public void onBitmap(Bitmap bitmap) {
+                imageView.setImageBitmap(bitmap);
+                applyBlur(imageView,flag);
+            }
+        });
     }
 
     /**

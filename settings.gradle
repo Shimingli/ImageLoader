@@ -1,1 +1,1 @@
-include ':app', ':imageloaderlibrary', ':compresspic', ':imageloader4.7.1'
+include ':app', ':imageloaderlibrary', ':compresspic', ':imageloader4.7.1', ':glide4.7.1demo'

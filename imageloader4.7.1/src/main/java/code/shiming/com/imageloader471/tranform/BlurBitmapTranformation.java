@@ -1,72 +1,61 @@
 package code.shiming.com.imageloader471.tranform;
 
-import android.content.Context;
+
 import android.graphics.Bitmap;
-import android.widget.ImageView;
+import android.support.annotation.NonNull;
+
+import com.bumptech.glide.load.engine.bitmap_recycle.BitmapPool;
+import com.bumptech.glide.load.resource.bitmap.BitmapTransformation;
+
+import java.security.MessageDigest;
 
 /**
- * Created by shiming on 2016/10/26.
- * 处理模糊图片，但是不能达到高斯模糊的效果
+ * author： Created by shiming on 2018/4/19 18:23
+ * mailbox：lamshiming@sina.com
  */
 
-
-public class BlurBitmapTransformation implements IBitmapTransformation {
+public class BlurBitmapTranformation extends BitmapTransformation {
 
     private int radius;
-    private Context context;
 
-    public BlurBitmapTransformation(Context context, int radius) {
+    public BlurBitmapTranformation(int radius) {
+        super();
         this.radius = radius;
-        this.context = context;
+
     }
 
     @Override
-    public Bitmap transform(Bitmap source, ImageView imageView) {
+    protected Bitmap transform(@NonNull BitmapPool pool, @NonNull Bitmap toTransform, int outWidth, int outHeight) {
+        return blurCrop(pool, toTransform);
+    }
 
-        if (source == null) {
+    private Bitmap blurCrop(BitmapPool pool, Bitmap toTransform) {
+
+        if (toTransform == null) {
             return null;
         }
-
         if (radius <= 0) {
             radius = 25;
         }
-
         Bitmap target;
+        //前面使用的资源，后面使用的是pool，
+        target = blur(toTransform, radius,pool);
 
-//        if(Build.VERSION.SDK_INT >= 17){
-//            target = Bitmap.createBitmap(source.getWidth(),source.getHeight(),Bitmap.Config.ARGB_8888);
-//            final RenderScript rs = RenderScript.create(context.getApplicationContext());
-//            final Allocation input = Allocation.createFromBitmap(rs, source);
-//            final Allocation output = Allocation.createFromBitmap(rs, target);
-//            final ScriptIntrinsicBlur script = ScriptIntrinsicBlur.create(rs, Element.U8_4(rs));
-//            script.setRadius(radius);
-//            script.setInput(input);
-//            script.forEach(output);
-//            output.copyTo(target);
-//            rs.destroy();
-//            context = null;
-//            return target;
-//        }
-
-        target = blur(source, radius);
-        context = null;
         return target;
-
     }
 
     @Override
-    public Context getContext() {
-        return context;
+    public void updateDiskCacheKey(@NonNull MessageDigest messageDigest) {
+
     }
 
-    /**
-     * 当设置过大的radius 容易内存溢出
-     * at iamgeloader.client.tranform.BlurBitmapTransformation.blur(BlurBitmapTransformation.java:80)
-     * @param source
-     * @param radius
-     * @return
-     */
-    private Bitmap blur(Bitmap source, int radius) {
+    private Bitmap blur(Bitmap source, int radius, BitmapPool pool) {
+//        int w = source.getWidth();
+//        int h = source.getHeight();
+//        //由于有这个对象，可以这样的获取尺寸，方便对图片的操作，和对垃圾的回收
+//        Bitmap target = pool.get(w, h, Bitmap.Config.ARGB_8888);
+//        //copy
+//        Bitmap bitmap = target.copy(source.getConfig(), true);
         Bitmap bitmap = source.copy(source.getConfig(), true);
         int w = source.getWidth();
         int h = source.getHeight();
@@ -255,17 +244,13 @@ public class BlurBitmapTransformation implements IBitmapTransformation {
                 routSum += sir[0];
                 goutSum += sir[1];
                 boutSum += sir[2];
-
                 rinSum -= sir[0];
                 ginSum -= sir[1];
                 binSum -= sir[2];
-
                 yi += w;
             }
         }
-
         bitmap.setPixels(pix, 0, w, 0, 0, w, h);
-
         return bitmap;
     }
 }

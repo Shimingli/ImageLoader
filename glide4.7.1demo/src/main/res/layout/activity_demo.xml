@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    >
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <ImageView
+            android:layout_margin="10dp"
+            android:id="@+id/image_view_1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+        <ImageView
+            android:layout_margin="10dp"
+            android:id="@+id/image_view_2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+        <ImageView
+            android:layout_margin="10dp"
+            android:id="@+id/image_view_3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+        <ImageView
+            android:background="#4400ff71"
+            android:layout_margin="10dp"
+            android:id="@+id/image_view_4"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+        <ImageView
+            android:background="#44000071"
+            android:layout_margin="10dp"
+            android:id="@+id/image_view_5"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+        <ImageView
+            android:background="#44008771"
+            android:layout_margin="10dp"
+            android:id="@+id/image_view_6"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+        <ImageView
+            android:background="#44558771"
+            android:layout_margin="10dp"
+            android:id="@+id/image_view_7"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+        <TextView
+            android:layout_gravity="center"
+            android:text="new start Glide V4 提供的新功能，使用内部特效类"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <ImageView
+            android:background="#44558771"
+            android:layout_margin="10dp"
+            android:id="@+id/image_view_8"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+        <ImageView
+            android:background="#44558771"
+            android:layout_margin="10dp"
+            android:id="@+id/image_view_9"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+        <ImageView
+            android:background="#44558771"
+            android:layout_margin="10dp"
+            android:id="@+id/image_view_10"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+        <ImageView
+            android:background="#44558771"
+            android:layout_margin="10dp"
+            android:id="@+id/image_view_11"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+        <TextView
+            android:layout_gravity="center"
+            android:text="使用的是另外一种方法，指定传入的那种的方法 ,还可以不断的扩展，不断的扩展，这是Gilded提供的一些操作，牛逼 ，牛逼 这是对网络图片的操作"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <ImageView
+            android:background="#44558771"
+            android:layout_margin="10dp"
+            android:id="@+id/image_view_12"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+        <ImageView
+            android:background="#44558771"
+            android:layout_margin="10dp"
+            android:id="@+id/image_view_13"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+        <ImageView
+            android:background="#44558771"
+            android:layout_margin="10dp"
+            android:id="@+id/image_view_14"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+        <ImageView
+            android:background="#44558771"
+            android:layout_margin="10dp"
+            android:id="@+id/image_view_15"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+        <ImageView
+            android:background="#44558771"
+            android:layout_margin="10dp"
+            android:id="@+id/image_view_16"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+        <ImageView
+            android:background="#44558771"
+            android:layout_margin="10dp"
+            android:id="@+id/image_view_17"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+        <ImageView
+            android:background="#44558771"
+            android:layout_margin="10dp"
+            android:id="@+id/image_view_18"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+        <ImageView
+            android:background="#44558771"
+            android:layout_margin="10dp"
+            android:id="@+id/image_view_19"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+        <ImageView
+            android:background="#44558771"
+            android:layout_margin="10dp"
+            android:id="@+id/image_view_20"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+    </LinearLayout>
+</ScrollView>

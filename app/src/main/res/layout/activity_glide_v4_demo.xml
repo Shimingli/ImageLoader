@@ -28,33 +28,32 @@
             android:layout_height="wrap_content"/>
 
         <ImageView
+            android:background="#4400ff71"
             android:layout_margin="10dp"
             android:id="@+id/image_view_4"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
 
         <ImageView
+            android:background="#44000071"
             android:layout_margin="10dp"
             android:id="@+id/image_view_5"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
 
         <ImageView
+            android:background="#44008771"
             android:layout_margin="10dp"
             android:id="@+id/image_view_6"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
 
         <ImageView
+            android:background="#44558771"
             android:layout_margin="10dp"
             android:id="@+id/image_view_7"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
 
-        <ImageView
-            android:layout_margin="10dp"
-            android:id="@+id/image_view_8"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
     </LinearLayout>
 </ScrollView>

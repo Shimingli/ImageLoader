@@ -11,9 +11,10 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.FragmentActivity;
 import android.widget.ImageView;
 
-import code.shiming.com.imageloader471.tranform.BlurBitmapTransformation;
-import code.shiming.com.imageloader471.tranform.CircleBitmapTransformation;
-import code.shiming.com.imageloader471.tranform.RoundBitmapTransformation;
+import iamgeloader.client.ImageLoader;
+import iamgeloader.client.tranform.BlurBitmapTransformation;
+import iamgeloader.client.tranform.CircleBitmapTransformation;
+import iamgeloader.client.tranform.RoundBitmapTransformation;
 
 
 /**
@@ -42,21 +43,21 @@ public class ImageLoaderByNetActivity extends FragmentActivity {
     }
 
     private void loadData() {
-//        //圆形图片
-//        ImageLoader.getInstance().displayCircleImage(this, "http://imgsrc.baidu.com/imgad/pic/item/267f9e2f07082838b5168c32b299a9014c08f1f9.jpg", mImageView_1, R.mipmap.ic_launcher_round);
-//        //圆角图片
-//        ImageLoader.getInstance().displayRoundImage(this, "http://imgsrc.baidu.com/imgad/pic/item/267f9e2f07082838b5168c32b299a9014c08f1f9.jpg", mImageView_2, R.mipmap.ic_launcher_round, 40);
-//        //模糊图片
-//        ImageLoader.getInstance().displayBlurImage(this, "http://imgsrc.baidu.com/imgad/pic/item/267f9e2f07082838b5168c32b299a9014c08f1f9.jpg", mImageView_3, R.mipmap.ic_launcher_round, 100);
-//
-//        //本地图片 不做处理
-//        ImageLoader.getInstance().displayImageInResource(this, R.mipmap.test, mImageView_4);
-//        //本地图片，模糊处理
-//        ImageLoader.getInstance().displayImageInResource(this, R.mipmap.test, mImageView_5, new BlurBitmapTransformation(this, 200));
-//        //本地图片，裁圆角处理
-//        ImageLoader.getInstance().displayImageInResource(this, R.mipmap.test, mImageView_6, new CircleBitmapTransformation(this));
-//        //四周倒角处理
-//        ImageLoader.getInstance().displayImageInResource(this, R.mipmap.test, mImageView_7, new RoundBitmapTransformation(this, 40));
+        //圆形图片
+        ImageLoader.getInstance().displayCircleImage(this, "http://imgsrc.baidu.com/imgad/pic/item/267f9e2f07082838b5168c32b299a9014c08f1f9.jpg", mImageView_1, R.mipmap.ic_launcher_round);
+        //圆角图片
+        ImageLoader.getInstance().displayRoundImage(this, "http://imgsrc.baidu.com/imgad/pic/item/267f9e2f07082838b5168c32b299a9014c08f1f9.jpg", mImageView_2, R.mipmap.ic_launcher_round, 40);
+        //模糊图片
+        ImageLoader.getInstance().displayBlurImage(this, "http://imgsrc.baidu.com/imgad/pic/item/267f9e2f07082838b5168c32b299a9014c08f1f9.jpg", mImageView_3, R.mipmap.ic_launcher_round, 100);
+
+        //本地图片 不做处理
+        ImageLoader.getInstance().displayImageInResource(this, R.mipmap.test, mImageView_4);
+        //本地图片，模糊处理
+        ImageLoader.getInstance().displayImageInResource(this, R.mipmap.test, mImageView_5, new BlurBitmapTransformation(this, 200));
+        //本地图片，裁圆角处理
+        ImageLoader.getInstance().displayImageInResource(this, R.mipmap.test, mImageView_6, new CircleBitmapTransformation(this));
+        //四周倒角处理
+        ImageLoader.getInstance().displayImageInResource(this, R.mipmap.test, mImageView_7, new RoundBitmapTransformation(this, 40));
         //通过代码实现裁剪为圆形图片
         drawCicriBitmap();
 

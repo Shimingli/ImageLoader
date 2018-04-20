@@ -1,9 +1,14 @@
 package code.shiming.com.imageloader471;
 
+import android.app.Activity;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.support.v4.app.Fragment;
 import android.widget.ImageView;
+
+import com.bumptech.glide.load.Transformation;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
+import com.bumptech.glide.load.resource.bitmap.BitmapTransformation;
 
 import java.io.File;
 
@@ -11,7 +16,8 @@ import code.shiming.com.imageloader471.listener.IGetBitmapListener;
 import code.shiming.com.imageloader471.listener.IGetDrawableListener;
 import code.shiming.com.imageloader471.listener.IImageLoaderListener;
 import code.shiming.com.imageloader471.listener.ImageSize;
-import code.shiming.com.imageloader471.tranform.IBitmapTransformation;
+import code.shiming.com.imageloader471.okhttp.OnGlideImageViewListener;
+import code.shiming.com.imageloader471.okhttp.OnProgressListener;
 
 
 /**
@@ -52,10 +58,8 @@ public class ImageLoaderV4 implements IImageLoaderClient {
                 }
             }
         }
-
         return instance;
     }
-
 
     @Override
     public void init(Context context) {
@@ -158,14 +162,14 @@ public class ImageLoaderV4 implements IImageLoaderClient {
     }
 
     @Override
-    public void displayImage(Context context, String url, ImageView imageView, int defRes, IBitmapTransformation... transformations) {
+    public void displayImage(Context context, String url, ImageView imageView, int defRes,BitmapTransformation transformations) {
         if (client != null) {
             client.displayImage(context, url, imageView, defRes, transformations);
         }
     }
 
     @Override
-    public void displayImage(Fragment fragment, String url, ImageView imageView, int defRes, IBitmapTransformation... transformations) {
+    public void displayImage(Fragment fragment, String url, ImageView imageView, int defRes, BitmapTransformation transformations) {
         if (client != null) {
             client.displayImage(fragment, url, imageView, defRes, transformations);
         }
@@ -298,14 +302,14 @@ public class ImageLoaderV4 implements IImageLoaderClient {
     }
 
     @Override
-    public void displayImageInResource(Context context, int resId, ImageView imageView, IBitmapTransformation... transformations) {
+    public void displayImageInResource(Context context, int resId, ImageView imageView, BitmapTransformation transformations) {
         if (client != null) {
             client.displayImageInResource(context, resId, imageView, transformations);
         }
     }
 
     @Override
-    public void displayImageInResource(Fragment fragment, int resId,  ImageView imageView, IBitmapTransformation... transformations) {
+    public void displayImageInResource(Fragment fragment, int resId,  ImageView imageView, BitmapTransformation transformations) {
         if (client != null) {
             client.displayImageInResource(fragment, resId, imageView, transformations);
         }
@@ -326,16 +330,217 @@ public class ImageLoaderV4 implements IImageLoaderClient {
     }
 
     @Override
-    public void displayImageInResource(Context context, int resId,  ImageView imageView, int defRes, IBitmapTransformation... transformations) {
+    public void displayImageInResource(Context context, int resId,  ImageView imageView, int defRes, BitmapTransformation transformations) {
         if (client != null) {
             client.displayImageInResource(context, resId, imageView, defRes, transformations);
         }
     }
 
     @Override
-    public void displayImageInResource(Fragment fragment, int resId,  ImageView imageView, int defRes, IBitmapTransformation... transformations) {
+    public void displayImageInResource(Fragment fragment, int resId,  ImageView imageView, int defRes, BitmapTransformation transformations) {
         if (client != null) {
             client.displayImageInResource(fragment, resId,  imageView, defRes, transformations);
+        }
+    }
+
+    @Override
+    public void displayImageInResourceTransform(Activity activity, int resId, ImageView imageView, Transformation transformation, int errorResId) {
+        if (client != null) {
+            client.displayImageInResourceTransform(activity, resId,  imageView, transformation, errorResId);
+        }
+    }
+
+    @Override
+    public void displayImageInResourceTransform(Context context, int resId, ImageView imageView, Transformation transformation, int errorResId) {
+        if (client != null) {
+            client.displayImageInResourceTransform(context, resId,  imageView, transformation, errorResId);
+        }
+    }
+
+    @Override
+    public void displayImageInResourceTransform(Fragment fragment, int resId, ImageView imageView, Transformation transformation, int errorResId) {
+        if (client != null) {
+            client.displayImageInResourceTransform(fragment, resId,  imageView, transformation, errorResId);
+        }
+    }
+
+    @Override
+    public void displayImageByNet(Context context, String url, ImageView imageView, int defRes, Transformation transformation) {
+        if (client != null) {
+            client.displayImageByNet(context, url,  imageView, defRes, transformation);
+        }
+    }
+
+    @Override
+    public void displayImageByNet(Fragment fragment, String url, ImageView imageView, int defRes, Transformation transformation) {
+        if (client != null) {
+            client.displayImageByNet(fragment, url,  imageView, defRes, transformation);
+        }
+    }
+
+    @Override
+    public void displayImageByNet(Activity activity, String url, ImageView imageView, int defRes, Transformation transformation) {
+        if (client != null) {
+            client.displayImageByNet(activity, url,  imageView, defRes, transformation);
+        }
+    }
+    /**尽管及时取消不必要的加载是很好的实践，但这并不是必须的操作。
+     * 实际上，当 Glide.with() 中传入的 Activity 或 Fragment 实例销毁时，
+     * Glide 会自动取消加载并回收资源。这里我隐藏了api的调用
+     * {@hide}
+     */
+    @Override
+    public void clear(Activity activity, ImageView imageView) {
+        if (client != null) {
+            client.clear(activity, imageView);
+        }
+    }
+    /**尽管及时取消不必要的加载是很好的实践，但这并不是必须的操作。
+     * 实际上，当 Glide.with() 中传入的 Activity 或 Fragment 实例销毁时，
+     * Glide 会自动取消加载并回收资源。这里我隐藏了api的调用
+     * {@hide}
+     */
+    @Override
+    public void clear(Context context, ImageView imageView) {
+        if (client != null) {
+            client.clear(context, imageView);
+        }
+    }
+    /**尽管及时取消不必要的加载是很好的实践，但这并不是必须的操作。
+     * 实际上，当 Glide.with() 中传入的 Activity 或 Fragment 实例销毁时，
+     * Glide 会自动取消加载并回收资源。这里我隐藏了api的调用
+     * {@hide}
+     */
+    @Override
+    public void clear(Fragment fragment, ImageView imageView) {
+        if (client != null) {
+            client.clear(fragment, imageView);
+        }
+    }
+
+    /**
+     * 指定选择哪种缓存的策略
+     * @param fragment
+     * @param url
+     * @param diskCacheStrategy
+     * @param imageView
+     */
+    @Override
+    public void displayImageByDiskCacheStrategy(Fragment fragment, String url, DiskCacheStrategy diskCacheStrategy, ImageView imageView) {
+        if (client != null) {
+            client.displayImageByDiskCacheStrategy(fragment, url,  diskCacheStrategy, imageView);
+        }
+    }
+
+    @Override
+    public void displayImageByDiskCacheStrategy(Activity activity, String url, DiskCacheStrategy diskCacheStrategy, ImageView imageView) {
+        if (client != null) {
+            client.displayImageByDiskCacheStrategy(activity, url,  diskCacheStrategy, imageView);
+        }
+    }
+
+    @Override
+    public void displayImageByDiskCacheStrategy(Context context, String url, DiskCacheStrategy diskCacheStrategy, ImageView imageView) {
+        if (client != null) {
+            client.displayImageByDiskCacheStrategy(context, url,  diskCacheStrategy, imageView);
+        }
+    }
+
+    @Override
+    public void disPlayImageOnlyRetrieveFromCache(Fragment fragment, String url, ImageView imageView) {
+        if (client != null) {
+            client.disPlayImageOnlyRetrieveFromCache(fragment, url, imageView);
+        }
+    }
+
+    @Override
+    public void disPlayImageOnlyRetrieveFromCache(Activity activity, String url, ImageView imageView) {
+        if (client != null) {
+            client.disPlayImageOnlyRetrieveFromCache(activity, url, imageView);
+        }
+    }
+
+    @Override
+    public void disPlayImageOnlyRetrieveFromCache(Context context, String url, ImageView imageView) {
+        if (client != null) {
+            client.disPlayImageOnlyRetrieveFromCache(context, url, imageView);
+        }
+    }
+
+    @Override
+    public void disPlayImageSkipMemoryCache(Fragment fragment, String url, ImageView imageView, boolean skipflag, boolean diskCacheStratey) {
+        if (client != null) {
+            client.disPlayImageSkipMemoryCache(fragment, url, imageView,skipflag,diskCacheStratey);
+        }
+    }
+
+    @Override
+    public void disPlayImageSkipMemoryCache(Activity activity, String url, ImageView imageView, boolean skipflag, boolean diskCacheStratey) {
+        if (client != null) {
+            client.disPlayImageSkipMemoryCache(activity, url, imageView,skipflag,diskCacheStratey);
+        }
+    }
+
+    @Override
+    public void disPlayImageSkipMemoryCache(Context context, String url, ImageView imageView, boolean skipflag, boolean diskCacheStratey) {
+        if (client != null) {
+            client.disPlayImageSkipMemoryCache(context, url, imageView,skipflag,diskCacheStratey);
+        }
+    }
+
+    @Override
+    public void disPlayImageErrorReload(Fragment fragment, String url, String fallbackUrl, ImageView imageView) {
+        if (client != null) {
+            client.disPlayImageErrorReload(fragment, url,fallbackUrl, imageView);
+        }
+    }
+
+    @Override
+    public void disPlayImageErrorReload(Activity activity, String url, String fallbackUrl, ImageView imageView) {
+        if (client != null) {
+            client.disPlayImageErrorReload(activity, url,fallbackUrl, imageView);
+        }
+    }
+
+    @Override
+    public void disPlayImageErrorReload(Context context, String url, String fallbackUrl, ImageView imageView) {
+        if (client != null) {
+            client.disPlayImageErrorReload(context, url,fallbackUrl, imageView);
+        }
+    }
+
+    @Override
+    public void disPlayImagedisallowHardwareConfig(Fragment fragment, String url, ImageView imageView) {
+        if (client != null) {
+            client.disPlayImagedisallowHardwareConfig(fragment, url,imageView);
+        }
+    }
+
+    @Override
+    public void disPlayImagedisallowHardwareConfig(Activity activity, String url, ImageView imageView) {
+        if (client != null) {
+            client.disPlayImagedisallowHardwareConfig(activity, url,imageView);
+        }
+    }
+
+    @Override
+    public void disPlayImagedisallowHardwareConfig(Context context, String url, ImageView imageView) {
+        if (client != null) {
+            client.disPlayImagedisallowHardwareConfig(context, url,imageView);
+        }
+    }
+
+    @Override
+    public void disPlayImageProgress(Context context, String url, ImageView imageView, int placeholderResId, int errorResId, OnGlideImageViewListener listener) {
+        if (client != null) {
+            client.disPlayImageProgress(context, url,imageView,placeholderResId,errorResId,listener);
+        }
+    }
+
+    @Override
+    public void disPlayImageProgressByOnProgressListener(Context context, String url, ImageView imageView, int placeholderResId, int errorResId, OnProgressListener onProgressListener) {
+        if (client != null) {
+            client.disPlayImageProgressByOnProgressListener(context, url,imageView,placeholderResId,errorResId,onProgressListener);
         }
     }
 

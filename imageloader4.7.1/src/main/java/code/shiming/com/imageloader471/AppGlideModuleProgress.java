@@ -17,7 +17,7 @@ import code.shiming.com.imageloader471.okhttp.ProgressManager;
 
 
 @GlideModule
-public class ProgressAppGlideModule extends AppGlideModule {
+public class AppGlideModuleProgress extends AppGlideModule {
     /**
      OkHttp 是一个底层网络库(相较于 Cronet 或 Volley 而言)，尽管它也包含了 SPDY 的支持。
      OkHttp 与 Glide 一起使用可以提供可靠的性能，并且在加载图片时通常比 Volley 产生的垃圾要少。
@@ -134,11 +134,6 @@ public class ProgressAppGlideModule extends AppGlideModule {
 //            }
 //        });
 
-
-
-//        builder.setDefaultRequestOptions(
-//                new RequestOptions().disallowHardwareConfig()
-//                        .format(DecodeFormat.PREFER_RGB_565));
     }
 
     /**

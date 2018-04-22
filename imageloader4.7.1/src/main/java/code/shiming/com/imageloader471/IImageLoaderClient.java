@@ -4,10 +4,9 @@ import android.app.Activity;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.support.v4.app.Fragment;
-import android.view.PixelCopy;
 import android.widget.ImageView;
 
-import com.bumptech.glide.Glide;
+import com.bumptech.glide.TransitionOptions;
 import com.bumptech.glide.load.Transformation;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.bumptech.glide.load.resource.bitmap.BitmapTransformation;
@@ -204,9 +203,43 @@ public interface IImageLoaderClient {
     public void disPlayImagedisallowHardwareConfig(Activity activity,String url,ImageView imageView);
     public void disPlayImagedisallowHardwareConfig(Context context,String url,ImageView imageView);
 
-
+    //监听图片的下载进度，是否完成，百分比 也可以加载本地图片，扩张一下
     public void disPlayImageProgress(Context context,String url,ImageView imageView,int placeholderResId,int errorResId,OnGlideImageViewListener listener);
+    public void disPlayImageProgress(Activity activity,String url,ImageView imageView,int placeholderResId,int errorResId,OnGlideImageViewListener listener);
+    public void disPlayImageProgress(Fragment fragment,String url,ImageView imageView,int placeholderResId,int errorResId,OnGlideImageViewListener listener);
 
     public void disPlayImageProgressByOnProgressListener(Context context,String url,ImageView imageView,int placeholderResId,int errorResId, OnProgressListener onProgressListener);
+    public void disPlayImageProgressByOnProgressListener(Activity activity,String url,ImageView imageView,int placeholderResId,int errorResId, OnProgressListener onProgressListener);
+    public void disPlayImageProgressByOnProgressListener(Fragment fragment,String url,ImageView imageView,int placeholderResId,int errorResId, OnProgressListener onProgressListener);
 
+
+
+//    TransitionOptions 用于给一个特定的请求指定过渡。
+//    每个请求可以使用 RequestBuilder 中的 transition()
+//    方法来设定 TransitionOptions 。还可以通过使用
+//    BitmapTransitionOptions 或 DrawableTransitionOptions
+//    来指定类型特定的过渡动画。对于 Bitmap 和 Drawable
+//    之外的资源类型，可以使用 GenericTransitionOptions。 Glide v4 将不会默认应用交叉淡入或任何其他的过渡效果。每个请求必须手动应用过渡。
+    public void displayImageByTransition(Context context, String url, TransitionOptions transitionOptions, ImageView imageView);
+    public void displayImageByTransition(Activity activity, String url, TransitionOptions transitionOptions, ImageView imageView);
+    public void displayImageByTransition(Fragment fragment, String url, TransitionOptions transitionOptions, ImageView imageView);
+
+    //失去焦点，建议实际的项目中少用，取消求情
+    public void glidePauseRequests(Context context);
+    public void glidePauseRequests(Activity activity);
+    public void glidePauseRequests(Fragment fragment);
+
+    //获取焦点，建议实际的项目中少用
+    public void glideResumeRequests(Context context);
+    public void glideResumeRequests(Activity activity);
+    public void glideResumeRequests(Fragment fragment);
+    //加载缩图图     int thumbnailSize = 10;//越小，图片越小，低网络的情况，图片越小
+    //GlideApp.with(this).load(urlnoData).override(thumbnailSize))// API 来强制 Glide 在缩略图请求中加载一个低分辨率图像
+    public void displayImageThumbnail(Context context,String url,String backUrl,int thumbnailSize,ImageView imageView);
+    public void displayImageThumbnail(Activity activity,String url,String backUrl,int thumbnailSize,ImageView imageView);
+    public void displayImageThumbnail(Fragment fragment,String url,String backUrl,int thumbnailSize,ImageView imageView);
+    //如果没有两个url的话，也想，记载一个缩略图
+    public void displayImageThumbnail(Fragment fragment,String url,float thumbnailSize,ImageView imageView);
+    public void displayImageThumbnail(Activity activity,String url,float thumbnailSize,ImageView imageView);
+    public void displayImageThumbnail(Context context,String url,float thumbnailSize,ImageView imageView);
 }

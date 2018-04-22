@@ -1,21 +1,19 @@
 package code.shiming.com.glide471demo;
 
-import android.support.v7.app.AppCompatActivity;
+import android.graphics.Bitmap;
 import android.os.Bundle;
-import android.view.View;
+import android.support.v7.app.AppCompatActivity;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bumptech.glide.GenericTransitionOptions;
 import com.bumptech.glide.Glide;
-import com.bumptech.glide.load.DecodeFormat;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
-import com.bumptech.glide.load.engine.GlideException;
+import com.bumptech.glide.load.resource.bitmap.BitmapTransitionOptions;
 import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions;
-import com.bumptech.glide.request.RequestOptions;
 
 import code.shiming.com.imageloader471.GlideApp;
 import code.shiming.com.imageloader471.ImageLoaderV4;
-import code.shiming.com.imageloader471.okhttp.OnGlideImageViewListener;
 import code.shiming.com.imageloader471.tranform.BlurBitmapTranformation;
 
 import static com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions.withCrossFade;
@@ -123,7 +121,17 @@ public class TransitionOptionsActivity extends AppCompatActivity {
 
 
 
+        GlideApp.with(this)
+                .asBitmap()
+                .load(ur11)
+                .transition(BitmapTransitionOptions.withCrossFade())
+                .into(mImageView_9);
 
+        GlideApp.with(this)
+                .asBitmap()
+                .load(ur11)
+                .transition(GenericTransitionOptions.<Bitmap>withNoTransition())
+                .into(mImageView_10);
     }
 
     private void findView() {

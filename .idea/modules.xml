@@ -2,8 +2,9 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/ImageLoader.iml" filepath="$PROJECT_DIR$/ImageLoader.iml" />
       <module fileurl="file://E:\new_code\ImageLoader20180409\ImageLoader.iml" filepath="E:\new_code\ImageLoader20180409\ImageLoader.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/ImageLoader20180409.iml" filepath="$PROJECT_DIR$/.idea/ImageLoader20180409.iml" />
+      <module fileurl="file://F:\kotlin20180408\ImageLoader\.idea\ImageLoader20180409.iml" filepath="F:\kotlin20180408\ImageLoader\.idea\ImageLoader20180409.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
       <module fileurl="file://$PROJECT_DIR$/compresspic/compresspic.iml" filepath="$PROJECT_DIR$/compresspic/compresspic.iml" />
       <module fileurl="file://$PROJECT_DIR$/glide4.7.1demo/glide4.7.1demo.iml" filepath="$PROJECT_DIR$/glide4.7.1demo/glide4.7.1demo.iml" />

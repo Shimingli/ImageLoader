@@ -6,6 +6,7 @@ import android.graphics.Bitmap;
 import android.support.v4.app.Fragment;
 import android.widget.ImageView;
 
+import com.bumptech.glide.TransitionOptions;
 import com.bumptech.glide.load.Transformation;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.bumptech.glide.load.resource.bitmap.BitmapTransformation;
@@ -24,7 +25,15 @@ import code.shiming.com.imageloader471.okhttp.OnProgressListener;
  * Created by shiming on 2016/10/26.
  */
 public class ImageLoaderV4 implements IImageLoaderClient {
-
+    /**
+     * volatile 关键字：我个人理解的是：使用volatile关键字的程序在并发时能够正确执行。
+     * 但是它不能够代替synchronized关键字。在网上找到这么一句话：
+     * 观察加入volatile关键字和没有加入volatile关键字时所生成的汇编代码发现，
+     * 加入volatile关键字时，会多出一个lock前缀指令lock前缀指令实际上相当于一个内存屏障（也成内存栅栏），
+     * 内存屏障会提供3个功能：1）它确保指令重排序时不会把其后面的指令排到内存屏障之前的位置，
+     * 也不会把前面的指令排到内存屏障的后面；即在执行到内存屏障这句指令时，在它前面的操作已经全部完成；
+     * 2）它会强制将对缓存的修改操作立即写入主存；3）如果是写操作，它会导致其他CPU中对应的缓存行无效。
+     */
     private volatile static ImageLoaderV4 instance;
     private IImageLoaderClient client;
 
@@ -49,7 +58,16 @@ public class ImageLoaderV4 implements IImageLoaderClient {
         }
 
     }
-
+    /**
+     * 因为每次调用实例都需要判断同步锁，很多项目包括很多人都是用这种的
+     * 双重判断校验的方法，这种的方法看似很完美的解决了效率的问题，但是它
+     * 在并发量不多，安全性不太高的情况下能完美的运行，但是，
+     * 在jvm编译的过程中会出现指令重排的优化过程，这就会导致singleton实际上
+     * 没有被初始化，就分配了内存空间，也就是说singleton！=null但是又没有被初始化，
+     * 这就会导致返回的singletonthird返回的是不完整的
+     * 参考：http://www.360doc.com/content/11/0810/12/1542811_139352888.shtml
+     * 建议使用内部类实现单利模式
+     */
     public static ImageLoaderV4 getInstance() {
         if (instance == null) {
             synchronized (ImageLoaderV4.class) {
@@ -538,9 +556,172 @@ public class ImageLoaderV4 implements IImageLoaderClient {
     }
 
     @Override
+    public void disPlayImageProgress(Activity activity, String url, ImageView imageView, int placeholderResId, int errorResId, OnGlideImageViewListener listener) {
+        if (client != null) {
+            client.disPlayImageProgress(activity, url,imageView,placeholderResId,errorResId,listener);
+        }
+    }
+
+    @Override
+    public void disPlayImageProgress(Fragment fragment, String url, ImageView imageView, int placeholderResId, int errorResId, OnGlideImageViewListener listener) {
+        if (client != null) {
+            client.disPlayImageProgress(fragment, url,imageView,placeholderResId,errorResId,listener);
+        }
+    }
+
+    @Override
     public void disPlayImageProgressByOnProgressListener(Context context, String url, ImageView imageView, int placeholderResId, int errorResId, OnProgressListener onProgressListener) {
         if (client != null) {
             client.disPlayImageProgressByOnProgressListener(context, url,imageView,placeholderResId,errorResId,onProgressListener);
+        }
+    }
+
+    @Override
+    public void disPlayImageProgressByOnProgressListener(Activity activity, String url, ImageView imageView, int placeholderResId, int errorResId, OnProgressListener onProgressListener) {
+        if (client != null) {
+            client.disPlayImageProgressByOnProgressListener(activity, url,imageView,placeholderResId,errorResId,onProgressListener);
+        }
+    }
+
+    /**
+     * 需要监听 总的字节数，和文件的大小，同时也可以扩展为，加载本地图片
+     * @param fragment
+     * @param url
+     * @param imageView
+     * @param placeholderResId
+     * @param errorResId
+     * @param onProgressListener
+     */
+    @Override
+    public void disPlayImageProgressByOnProgressListener(Fragment fragment, String url, ImageView imageView, int placeholderResId, int errorResId, OnProgressListener onProgressListener) {
+        if (client != null) {
+            client.disPlayImageProgressByOnProgressListener(fragment, url,imageView,placeholderResId,errorResId,onProgressListener);
+        }
+    }
+    /**
+     * 过渡选项
+     TransitionOptions 用于决定你的加载完成时会发生什么。
+     使用 TransitionOption 可以应用以下变换：
+     View淡入
+     与占位符交叉淡入
+     或者什么都不发生
+     从白色 慢慢变透明 5s的间隔
+     GlideApp.with(this)
+     .load(ur11)
+     .transition(withCrossFade(5000)) 可以传入过度的时间
+     .into(mImageView_7);
+     */
+
+    @Override
+    public void displayImageByTransition(Context context, String url, TransitionOptions transitionOptions, ImageView imageView) {
+        if (client != null) {
+            client.displayImageByTransition(context, url,transitionOptions,imageView);
+        }
+
+    }
+
+    @Override
+    public void displayImageByTransition(Activity activity, String url, TransitionOptions transitionOptions, ImageView imageView) {
+        if (client != null) {
+            client.displayImageByTransition(activity, url,transitionOptions,imageView);
+        }
+    }
+
+    @Override
+    public void displayImageByTransition(Fragment fragment, String url, TransitionOptions transitionOptions, ImageView imageView) {
+        if (client != null) {
+            client.displayImageByTransition(fragment, url,transitionOptions,imageView);
+        }
+    }
+
+    @Override
+    public void glidePauseRequests(Context context) {
+        if (client != null) {
+            client.glidePauseRequests(context);
+        }
+    }
+
+    @Override
+    public void glidePauseRequests(Activity activity) {
+        if (client != null) {
+            client.glidePauseRequests(activity);
+        }
+    }
+
+    @Override
+    public void glidePauseRequests(Fragment fragment) {
+        if (client != null) {
+            client.glidePauseRequests(fragment);
+        }
+    }
+
+    @Override
+    public void glideResumeRequests(Context context) {
+        if (client != null) {
+            client.glideResumeRequests(context);
+        }
+    }
+
+    @Override
+    public void glideResumeRequests(Activity activity) {
+        if (client != null) {
+            client.glideResumeRequests(activity);
+        }
+    }
+
+    @Override
+    public void glideResumeRequests(Fragment fragment) {
+        if (client != null) {
+            client.glideResumeRequests(fragment);
+        }
+    }
+
+    @Override
+    public void displayImageThumbnail(Context context, String url, String backUrl, int thumbnailSize, ImageView imageView) {
+        if (client != null) {
+            client.displayImageThumbnail(context,url,backUrl,thumbnailSize,imageView);
+        }
+    }
+
+    @Override
+    public void displayImageThumbnail(Activity activity, String url, String backUrl, int thumbnailSize, ImageView imageView) {
+        if (client != null) {
+            client.displayImageThumbnail(activity,url,backUrl,thumbnailSize,imageView);
+        }
+    }
+
+    @Override
+    public void displayImageThumbnail(Fragment fragment, String url, String backUrl, int thumbnailSize, ImageView imageView) {
+        if (client != null) {
+            client.displayImageThumbnail(fragment,url,backUrl,thumbnailSize,imageView);
+        }
+    }
+
+    /**
+     * 没有地址也需要指定缩略图
+     * @param fragment
+     * @param url
+     * @param thumbnailSize
+     * @param imageView
+     */
+    @Override
+    public void displayImageThumbnail(Fragment fragment, String url, float thumbnailSize, ImageView imageView) {
+        if (client != null) {
+            client.displayImageThumbnail(fragment,url,thumbnailSize,imageView);
+        }
+    }
+
+    @Override
+    public void displayImageThumbnail(Activity activity, String url, float thumbnailSize, ImageView imageView) {
+        if (client != null) {
+            client.displayImageThumbnail(activity,url,thumbnailSize,imageView);
+        }
+    }
+
+    @Override
+    public void displayImageThumbnail(Context context, String url, float thumbnailSize, ImageView imageView) {
+        if (client != null) {
+            client.displayImageThumbnail(context,url,thumbnailSize,imageView);
         }
     }
 

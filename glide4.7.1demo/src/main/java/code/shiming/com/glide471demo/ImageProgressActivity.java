@@ -57,4 +57,27 @@ public class ImageProgressActivity extends AppCompatActivity {
             }
         });
     }
+
+    @Override
+    public void onBackPressed() {
+
+//        ImageLoaderV4.getInstance().glidePauseRequests(this);
+        super.onBackPressed();
+    }
+
+    @Override
+    protected void onPause() {
+         ImageLoaderV4.getInstance().clear(this,mImageView_7);
+        ImageLoaderV4.getInstance().clear(this,mImageView_8);
+        ImageLoaderV4.getInstance().glidePauseRequests(this);
+        super.onPause();
+    }
+
+    @Override
+    protected void onResume() {
+//        ImageLoaderV4.getInstance().clear(this,mImageView_7);
+//        ImageLoaderV4.getInstance().clear(this,mImageView_8);
+//        ImageLoaderV4.getInstance().glideResumeRequests(this);
+        super.onResume();
+    }
 }

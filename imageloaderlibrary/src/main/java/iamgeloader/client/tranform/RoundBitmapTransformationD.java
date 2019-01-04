@@ -13,12 +13,12 @@ import android.widget.ImageView;
  * Created by shiming on 2016/10/26.
  */
 
-public class RoundBitmapTransformation implements IBitmapTransformation {
+public class RoundBitmapTransformationD implements IBitmapTransformationD {
     private int radius;
     private Context context;
 
 
-    public RoundBitmapTransformation(Context context, int radius) {
+    public RoundBitmapTransformationD(Context context, int radius) {
         this.context = context;
         this.radius = radius;
     }

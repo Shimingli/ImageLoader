@@ -12,16 +12,16 @@ import com.bumptech.glide.load.engine.bitmap_recycle.BitmapPool;
  * Created by shiming on 2016/10/26.
  */
 
-public class GlideTransform extends com.bumptech.glide.load.resource.bitmap.BitmapTransformation {
+public class GlideTransformD extends com.bumptech.glide.load.resource.bitmap.BitmapTransformation {
 
-    private IBitmapTransformation transformation;
+    private IBitmapTransformationD transformation;
 
     /**
      *
      * @param context
      * @param transformation 自定义图片装换接口，在构造方法中传入
      */
-    public GlideTransform(Context context, IBitmapTransformation transformation) {
+    public GlideTransformD(Context context, IBitmapTransformationD transformation) {
         super(context);
         this.transformation = transformation;
     }

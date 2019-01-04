@@ -4,11 +4,7 @@ import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.graphics.Paint;
-import android.graphics.PorterDuff;
-import android.graphics.PorterDuffXfermode;
 import android.graphics.drawable.BitmapDrawable;
-import android.graphics.drawable.Drawable;
-import android.graphics.drawable.GradientDrawable;
 import android.view.View;
 import android.view.ViewTreeObserver;
 import android.widget.ImageView;
@@ -18,7 +14,7 @@ import com.shiming.imageloader.MyApp;
 import java.util.ArrayList;
 
 import iamgeloader.client.ImageLoader;
-import iamgeloader.client.listener.IGetBitmapListener;
+import iamgeloader.client.listener.IGetBitmapListenerByCall;
 
 
 /**
@@ -140,7 +136,7 @@ public class JniUtils {
      * @param imageView
      */
     public static void loadBlurImg(Context context, String url, final ImageView imageView, final boolean flag) {
-        ImageLoader.getInstance().getBitmapFromCache(context, url, new IGetBitmapListener() {
+        ImageLoader.getInstance().getBitmapFromCache(context, url, new IGetBitmapListenerByCall() {
             @Override
             public void onBitmap(Bitmap bitmap) {
                 imageView.setImageBitmap(bitmap);

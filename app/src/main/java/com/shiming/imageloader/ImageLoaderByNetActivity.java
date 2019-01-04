@@ -12,9 +12,9 @@ import android.support.v4.app.FragmentActivity;
 import android.widget.ImageView;
 
 import iamgeloader.client.ImageLoader;
-import iamgeloader.client.tranform.BlurBitmapTransformation;
-import iamgeloader.client.tranform.CircleBitmapTransformation;
-import iamgeloader.client.tranform.RoundBitmapTransformation;
+import iamgeloader.client.tranform.BlurBitmapTransformationDD;
+import iamgeloader.client.tranform.CircleBitmapTransformationDD;
+import iamgeloader.client.tranform.RoundBitmapTransformationD;
 
 
 /**
@@ -53,11 +53,11 @@ public class ImageLoaderByNetActivity extends FragmentActivity {
         //本地图片 不做处理
         ImageLoader.getInstance().displayImageInResource(this, R.mipmap.test, mImageView_4);
         //本地图片，模糊处理
-        ImageLoader.getInstance().displayImageInResource(this, R.mipmap.test, mImageView_5, new BlurBitmapTransformation(this, 200));
+        ImageLoader.getInstance().displayImageInResource(this, R.mipmap.test, mImageView_5, new BlurBitmapTransformationDD(this, 200));
         //本地图片，裁圆角处理
-        ImageLoader.getInstance().displayImageInResource(this, R.mipmap.test, mImageView_6, new CircleBitmapTransformation(this));
+        ImageLoader.getInstance().displayImageInResource(this, R.mipmap.test, mImageView_6, new CircleBitmapTransformationDD(this));
         //四周倒角处理
-        ImageLoader.getInstance().displayImageInResource(this, R.mipmap.test, mImageView_7, new RoundBitmapTransformation(this, 40));
+        ImageLoader.getInstance().displayImageInResource(this, R.mipmap.test, mImageView_7, new RoundBitmapTransformationD(this, 40));
         //通过代码实现裁剪为圆形图片
         drawCicriBitmap();
 

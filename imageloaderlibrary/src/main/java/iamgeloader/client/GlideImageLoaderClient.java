@@ -15,15 +15,15 @@ import com.bumptech.glide.request.target.Target;
 
 import java.io.File;
 
-import iamgeloader.client.listener.IGetBitmapListener;
-import iamgeloader.client.listener.IGetDrawableListener;
-import iamgeloader.client.listener.IImageLoaderListener;
-import iamgeloader.client.listener.ImageSize;
-import iamgeloader.client.tranform.BlurBitmapTransformation;
-import iamgeloader.client.tranform.CircleBitmapTransformation;
-import iamgeloader.client.tranform.GlideTransform;
-import iamgeloader.client.tranform.IBitmapTransformation;
-import iamgeloader.client.tranform.RoundBitmapTransformation;
+import iamgeloader.client.listener.IGetBitmapListenerByCall;
+import iamgeloader.client.listener.IGetDrawableListenerByCall;
+import iamgeloader.client.listener.IImageLoaderListenerByCall;
+import iamgeloader.client.listener.ImageSizeTwo;
+import iamgeloader.client.tranform.BlurBitmapTransformationDD;
+import iamgeloader.client.tranform.CircleBitmapTransformationDD;
+import iamgeloader.client.tranform.GlideTransformD;
+import iamgeloader.client.tranform.IBitmapTransformationD;
+import iamgeloader.client.tranform.RoundBitmapTransformationD;
 
 /**
  * Created by shiming on 2016/10/26.
@@ -70,7 +70,7 @@ public class GlideImageLoaderClient implements IImageLoaderClient {
     }
 
     @Override
-    public void getBitmapFromCache(Context context, String url, final IGetBitmapListener listener) {
+    public void getBitmapFromCache(Context context, String url, final IGetBitmapListenerByCall listener) {
         Glide.with(context).load(url).asBitmap().into(new SimpleTarget<Bitmap>() {
             @Override
             public void onResourceReady(Bitmap resource, GlideAnimation<? super Bitmap> glideAnimation) {
@@ -154,24 +154,24 @@ public class GlideImageLoaderClient implements IImageLoaderClient {
      * @param transformations bitmapTransform 方法设置图片转换
      */
     @Override
-    public void displayImage(Context context, String url, ImageView imageView, int defRes, final IBitmapTransformation... transformations) {
+    public void displayImage(Context context, String url, ImageView imageView, int defRes, final IBitmapTransformationD... transformations) {
         int size = transformations.length;
         //由于这里bitmapTransform接受的为com.bumptech.glide.load.resource.bitmap.BitmapTransformation子类
         //所以需要我们传入构造函数去
-        GlideTransform[] glideTransforms = new GlideTransform[size];
+        GlideTransformD[] glideTransforms = new GlideTransformD[size];
         for (int i = 0; i < size; i++) {
-            glideTransforms[i] = new GlideTransform(transformations[i].getContext(), transformations[i]);
+            glideTransforms[i] = new GlideTransformD(transformations[i].getContext(), transformations[i]);
         }
         Glide.with(context).load(url).diskCacheStrategy(DiskCacheStrategy.SOURCE).placeholder(defRes).error(defRes).bitmapTransform(glideTransforms).into(imageView);
     }
 
     @Override
-    public void displayImage(Fragment fragment, String url, ImageView imageView, int defRes, IBitmapTransformation... transformations) {
+    public void displayImage(Fragment fragment, String url, ImageView imageView, int defRes, IBitmapTransformationD... transformations) {
         int size = transformations.length;
-        GlideTransform[] glideTransforms = new GlideTransform[size];
+        GlideTransformD[] glideTransforms = new GlideTransformD[size];
 
         for (int i = 0; i < size; i++) {
-            glideTransforms[i] = new GlideTransform(transformations[i].getContext(), transformations[i]);
+            glideTransforms[i] = new GlideTransformD(transformations[i].getContext(), transformations[i]);
         }
         Glide.with(fragment).load(url).diskCacheStrategy(DiskCacheStrategy.SOURCE).placeholder(defRes).error(defRes).bitmapTransform(glideTransforms).into(imageView);
     }
@@ -185,12 +185,12 @@ public class GlideImageLoaderClient implements IImageLoaderClient {
      * @param size override(int width, int height). 重新设置Target的宽高值
      */
     @Override
-    public void displayImage(Context context, String url, ImageView imageView, int defRes, ImageSize size) {
+    public void displayImage(Context context, String url, ImageView imageView, int defRes, ImageSizeTwo size) {
         Glide.with(context).load(url).diskCacheStrategy(DiskCacheStrategy.SOURCE).placeholder(defRes).error(defRes).override(size.getWidth(), size.getHeight()).into(imageView);
     }
 
     @Override
-    public void displayImage(Fragment fragment, String url, ImageView imageView, int defRes, ImageSize size) {
+    public void displayImage(Fragment fragment, String url, ImageView imageView, int defRes, ImageSizeTwo size) {
         Glide.with(fragment).load(url).diskCacheStrategy(DiskCacheStrategy.SOURCE).placeholder(defRes).error(defRes).override(size.getWidth(), size.getHeight()).into(imageView);
     }
 
@@ -212,7 +212,7 @@ public class GlideImageLoaderClient implements IImageLoaderClient {
      * @param listener  监听资源加载的请求状态 但不要每次请求都使用新的监听器，要避免不必要的内存申请，可以使用单例进行统一的异常监听和处理
      */
     @Override
-    public void displayImage(Context context, final String url, final ImageView imageView, final IImageLoaderListener listener) {
+    public void displayImage(Context context, final String url, final ImageView imageView, final IImageLoaderListenerByCall listener) {
         Glide.with(context).load(url).diskCacheStrategy(DiskCacheStrategy.SOURCE).listener(new RequestListener<String, GlideDrawable>() {
             @Override
             public boolean onException(Exception e, String model, Target<GlideDrawable> target, boolean isFirstResource) {
@@ -229,7 +229,7 @@ public class GlideImageLoaderClient implements IImageLoaderClient {
     }
 
     @Override
-    public void displayImage(Fragment fragment, final String url, final ImageView imageView, final IImageLoaderListener listener) {
+    public void displayImage(Fragment fragment, final String url, final ImageView imageView, final IImageLoaderListenerByCall listener) {
         Glide.with(fragment).load(url).diskCacheStrategy(DiskCacheStrategy.SOURCE).listener(new RequestListener<String, GlideDrawable>() {
             @Override
             public boolean onException(Exception e, String model, Target<GlideDrawable> target, boolean isFirstResource) {
@@ -246,7 +246,7 @@ public class GlideImageLoaderClient implements IImageLoaderClient {
     }
 
     @Override
-    public void displayImage(Context context, final String url, final ImageView imageView, int defRes, final IImageLoaderListener listener) {
+    public void displayImage(Context context, final String url, final ImageView imageView, int defRes, final IImageLoaderListenerByCall listener) {
         Glide.with(context).load(url).diskCacheStrategy(DiskCacheStrategy.SOURCE).placeholder(defRes).error(defRes).listener(new RequestListener<String, GlideDrawable>() {
             @Override
             public boolean onException(Exception e, String model, Target<GlideDrawable> target, boolean isFirstResource) {
@@ -263,7 +263,7 @@ public class GlideImageLoaderClient implements IImageLoaderClient {
     }
 
     @Override
-    public void displayImage(Fragment fragment, final String url, final ImageView imageView, int defRes, final IImageLoaderListener listener) {
+    public void displayImage(Fragment fragment, final String url, final ImageView imageView, int defRes, final IImageLoaderListenerByCall listener) {
         Glide.with(fragment).load(url).diskCacheStrategy(DiskCacheStrategy.SOURCE).listener(new RequestListener<String, GlideDrawable>() {
             @Override
             public boolean onException(Exception e, String model, Target<GlideDrawable> target, boolean isFirstResource) {
@@ -288,12 +288,12 @@ public class GlideImageLoaderClient implements IImageLoaderClient {
      */
     @Override
     public void displayCircleImage(Context context, String url, ImageView imageView, int defRes) {
-        Glide.with(context).load(url).diskCacheStrategy(DiskCacheStrategy.SOURCE).placeholder(defRes).error(defRes).bitmapTransform(new GlideTransform(context, new CircleBitmapTransformation(context))).into(imageView);
+        Glide.with(context).load(url).diskCacheStrategy(DiskCacheStrategy.SOURCE).placeholder(defRes).error(defRes).bitmapTransform(new GlideTransformD(context, new CircleBitmapTransformationDD(context))).into(imageView);
     }
 
     @Override
     public void displayCircleImage(Fragment fragment, String url, ImageView imageView, int defRes) {
-        Glide.with(fragment).load(url).diskCacheStrategy(DiskCacheStrategy.SOURCE).placeholder(defRes).error(defRes).bitmapTransform(new GlideTransform(imageView.getContext(), new CircleBitmapTransformation(imageView.getContext()))).into(imageView);
+        Glide.with(fragment).load(url).diskCacheStrategy(DiskCacheStrategy.SOURCE).placeholder(defRes).error(defRes).bitmapTransform(new GlideTransformD(imageView.getContext(), new CircleBitmapTransformationDD(imageView.getContext()))).into(imageView);
     }
 
     /**
@@ -306,12 +306,12 @@ public class GlideImageLoaderClient implements IImageLoaderClient {
      */
     @Override
     public void displayRoundImage(Context context, String url, ImageView imageView, int defRes, int radius) {
-        Glide.with(context).load(url).diskCacheStrategy(DiskCacheStrategy.SOURCE).placeholder(defRes).error(defRes).bitmapTransform(new GlideTransform(context, new RoundBitmapTransformation(imageView.getContext(), radius))).into(imageView);
+        Glide.with(context).load(url).diskCacheStrategy(DiskCacheStrategy.SOURCE).placeholder(defRes).error(defRes).bitmapTransform(new GlideTransformD(context, new RoundBitmapTransformationD(imageView.getContext(), radius))).into(imageView);
     }
 
     @Override
     public void displayRoundImage(Fragment fragment, String url, ImageView imageView, int defRes, int radius) {
-        Glide.with(fragment).load(url).diskCacheStrategy(DiskCacheStrategy.SOURCE).placeholder(defRes).error(defRes).bitmapTransform(new GlideTransform(imageView.getContext(), new RoundBitmapTransformation(imageView.getContext(), radius))).into(imageView);
+        Glide.with(fragment).load(url).diskCacheStrategy(DiskCacheStrategy.SOURCE).placeholder(defRes).error(defRes).bitmapTransform(new GlideTransformD(imageView.getContext(), new RoundBitmapTransformationD(imageView.getContext(), radius))).into(imageView);
     }
 
     /**
@@ -322,9 +322,9 @@ public class GlideImageLoaderClient implements IImageLoaderClient {
      * @param listener 接口回调需要拿到drawable
      */
     @Override
-    public void displayBlurImage(Context context, String url, int blurRadius, final IGetDrawableListener listener) {
+    public void displayBlurImage(Context context, String url, int blurRadius, final IGetDrawableListenerByCall listener) {
         Glide.with(context).load(url).diskCacheStrategy(DiskCacheStrategy.SOURCE).
-                bitmapTransform(new GlideTransform(context, new BlurBitmapTransformation(context, blurRadius))).
+                bitmapTransform(new GlideTransformD(context, new BlurBitmapTransformationDD(context, blurRadius))).
                 into(new SimpleTarget<GlideDrawable>() {
                     @Override
                     public void onResourceReady(GlideDrawable resource, GlideAnimation<? super GlideDrawable> glideAnimation) {
@@ -345,17 +345,17 @@ public class GlideImageLoaderClient implements IImageLoaderClient {
      */
     @Override
     public void displayBlurImage(Context context, String url, ImageView imageView, int defRes, int blurRadius) {
-        Glide.with(context).load(url).diskCacheStrategy(DiskCacheStrategy.SOURCE).placeholder(defRes).error(defRes).bitmapTransform(new GlideTransform(context, new BlurBitmapTransformation(context, blurRadius))).into(imageView);
+        Glide.with(context).load(url).diskCacheStrategy(DiskCacheStrategy.SOURCE).placeholder(defRes).error(defRes).bitmapTransform(new GlideTransformD(context, new BlurBitmapTransformationDD(context, blurRadius))).into(imageView);
     }
 
     @Override
     public void displayBlurImage(Context context, int resId, ImageView imageView, int blurRadius) {
-        Glide.with(context).load(resId).diskCacheStrategy(DiskCacheStrategy.SOURCE).bitmapTransform(new GlideTransform(imageView.getContext(), new BlurBitmapTransformation(imageView.getContext(), blurRadius))).into(imageView);
+        Glide.with(context).load(resId).diskCacheStrategy(DiskCacheStrategy.SOURCE).bitmapTransform(new GlideTransformD(imageView.getContext(), new BlurBitmapTransformationDD(imageView.getContext(), blurRadius))).into(imageView);
     }
 
     @Override
     public void displayBlurImage(Fragment fragment, String url, ImageView imageView, int defRes, int blurRadius) {
-        Glide.with(fragment).load(url).diskCacheStrategy(DiskCacheStrategy.SOURCE).placeholder(defRes).error(defRes).bitmapTransform(new GlideTransform(imageView.getContext(), new BlurBitmapTransformation(imageView.getContext(), blurRadius))).into(imageView);
+        Glide.with(fragment).load(url).diskCacheStrategy(DiskCacheStrategy.SOURCE).placeholder(defRes).error(defRes).bitmapTransform(new GlideTransformD(imageView.getContext(), new BlurBitmapTransformationDD(imageView.getContext(), blurRadius))).into(imageView);
     }
 
     /**
@@ -382,24 +382,24 @@ public class GlideImageLoaderClient implements IImageLoaderClient {
      * @param transformations
      */
     @Override
-    public void displayImageInResource(Context context, int resId,ImageView imageView, IBitmapTransformation... transformations) {
+    public void displayImageInResource(Context context, int resId,ImageView imageView, IBitmapTransformationD... transformations) {
         int size = transformations.length;
-        GlideTransform[] glideTransforms = new GlideTransform[size];
+        GlideTransformD[] glideTransforms = new GlideTransformD[size];
 
         for (int i = 0; i < size; i++) {
-            glideTransforms[i] = new GlideTransform(transformations[i].getContext(), transformations[i]);
+            glideTransforms[i] = new GlideTransformD(transformations[i].getContext(), transformations[i]);
         }
 
         Glide.with(context).load(resId).diskCacheStrategy(DiskCacheStrategy.NONE).transform(glideTransforms).into(imageView);
     }
 
     @Override
-    public void displayImageInResource(Fragment fragment, int resId,  ImageView imageView, IBitmapTransformation... transformations) {
+    public void displayImageInResource(Fragment fragment, int resId,  ImageView imageView, IBitmapTransformationD... transformations) {
         int size = transformations.length;
-        GlideTransform[] glideTransforms = new GlideTransform[size];
+        GlideTransformD[] glideTransforms = new GlideTransformD[size];
 
         for (int i = 0; i < size; i++) {
-            glideTransforms[i] = new GlideTransform(transformations[i].getContext(), transformations[i]);
+            glideTransforms[i] = new GlideTransformD(transformations[i].getContext(), transformations[i]);
         }
 
         Glide.with(fragment).load(resId).diskCacheStrategy(DiskCacheStrategy.NONE).transform(glideTransforms).into(imageView);
@@ -423,23 +423,23 @@ public class GlideImageLoaderClient implements IImageLoaderClient {
     }
     //关心context
     @Override
-    public void displayImageInResource(Context context, int resId,  ImageView imageView, int defRes, IBitmapTransformation... transformations) {
+    public void displayImageInResource(Context context, int resId,  ImageView imageView, int defRes, IBitmapTransformationD... transformations) {
         int size = transformations.length;
-        GlideTransform[] glideTransforms = new GlideTransform[size];
+        GlideTransformD[] glideTransforms = new GlideTransformD[size];
 
         for (int i = 0; i < size; i++) {
-            glideTransforms[i] = new GlideTransform(transformations[i].getContext(), transformations[i]);
+            glideTransforms[i] = new GlideTransformD(transformations[i].getContext(), transformations[i]);
         }
         Glide.with(context).load(resId).diskCacheStrategy(DiskCacheStrategy.NONE).placeholder(defRes).error(defRes).transform(glideTransforms).into(imageView);
     }
     //关心fragment
     @Override
-    public void displayImageInResource(Fragment fragment, int resId,  ImageView imageView, int defRes, IBitmapTransformation... transformations) {
+    public void displayImageInResource(Fragment fragment, int resId,  ImageView imageView, int defRes, IBitmapTransformationD... transformations) {
         int size = transformations.length;
-        GlideTransform[] glideTransforms = new GlideTransform[size];
+        GlideTransformD[] glideTransforms = new GlideTransformD[size];
 
         for (int i = 0; i < size; i++) {
-            glideTransforms[i] = new GlideTransform(transformations[i].getContext(), transformations[i]);
+            glideTransforms[i] = new GlideTransformD(transformations[i].getContext(), transformations[i]);
         }
         Glide.with(fragment).load(resId).diskCacheStrategy(DiskCacheStrategy.NONE).placeholder(defRes).error(defRes).transform(glideTransforms).into(imageView);
     }

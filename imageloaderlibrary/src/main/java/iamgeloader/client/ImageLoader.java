@@ -7,11 +7,11 @@ import android.widget.ImageView;
 
 import java.io.File;
 
-import iamgeloader.client.listener.IGetBitmapListener;
-import iamgeloader.client.listener.IGetDrawableListener;
-import iamgeloader.client.listener.IImageLoaderListener;
-import iamgeloader.client.listener.ImageSize;
-import iamgeloader.client.tranform.IBitmapTransformation;
+import iamgeloader.client.listener.IGetBitmapListenerByCall;
+import iamgeloader.client.listener.IGetDrawableListenerByCall;
+import iamgeloader.client.listener.IImageLoaderListenerByCall;
+import iamgeloader.client.listener.ImageSizeTwo;
+import iamgeloader.client.tranform.IBitmapTransformationD;
 
 /**
  * Created by shiming on 2016/10/26.
@@ -113,7 +113,7 @@ public class ImageLoader implements IImageLoaderClient {
      * @param listener
      */
     @Override
-    public void getBitmapFromCache(Context context, String url, IGetBitmapListener listener) {
+    public void getBitmapFromCache(Context context, String url, IGetBitmapListenerByCall listener) {
         if (client != null) {
             client.getBitmapFromCache(context, url, listener);
         }
@@ -162,28 +162,28 @@ public class ImageLoader implements IImageLoaderClient {
     }
 
     @Override
-    public void displayImage(Context context, String url, ImageView imageView, int defRes, IBitmapTransformation... transformations) {
+    public void displayImage(Context context, String url, ImageView imageView, int defRes, IBitmapTransformationD... transformations) {
         if (client != null) {
             client.displayImage(context, url, imageView, defRes, transformations);
         }
     }
 
     @Override
-    public void displayImage(Fragment fragment, String url, ImageView imageView, int defRes, IBitmapTransformation... transformations) {
+    public void displayImage(Fragment fragment, String url, ImageView imageView, int defRes, IBitmapTransformationD... transformations) {
         if (client != null) {
             client.displayImage(fragment, url, imageView, defRes, transformations);
         }
     }
 
     @Override
-    public void displayImage(Context context, String url, ImageView imageView, int defRes, ImageSize size) {
+    public void displayImage(Context context, String url, ImageView imageView, int defRes, ImageSizeTwo size) {
         if (client != null) {
             client.displayImage(context, url, imageView, defRes, size);
         }
     }
 
     @Override
-    public void displayImage(Fragment fragment, String url, ImageView imageView, int defRes, ImageSize size) {
+    public void displayImage(Fragment fragment, String url, ImageView imageView, int defRes, ImageSizeTwo size) {
         if (client != null) {
             client.displayImage(fragment, url, imageView, defRes, size);
         }
@@ -204,28 +204,28 @@ public class ImageLoader implements IImageLoaderClient {
     }
 
     @Override
-    public void displayImage(Context context, String url, ImageView imageView, IImageLoaderListener listener) {
+    public void displayImage(Context context, String url, ImageView imageView, IImageLoaderListenerByCall listener) {
         if (client != null) {
             client.displayImage(context, url, imageView, listener);
         }
     }
 
     @Override
-    public void displayImage(Fragment fragment, String url, ImageView imageView, IImageLoaderListener listener) {
+    public void displayImage(Fragment fragment, String url, ImageView imageView, IImageLoaderListenerByCall listener) {
         if (client != null) {
             client.displayImage(fragment, url, imageView, listener);
         }
     }
 
     @Override
-    public void displayImage(Context context, String url, ImageView imageView, int defRes, IImageLoaderListener listener) {
+    public void displayImage(Context context, String url, ImageView imageView, int defRes, IImageLoaderListenerByCall listener) {
         if (client != null) {
             client.displayImage(context, url, imageView, defRes, listener);
         }
     }
 
     @Override
-    public void displayImage(Fragment fragment, String url, ImageView imageView, int defRes, IImageLoaderListener listener) {
+    public void displayImage(Fragment fragment, String url, ImageView imageView, int defRes, IImageLoaderListenerByCall listener) {
         if (client != null) {
             client.displayImage(fragment, url, imageView, defRes, listener);
         }
@@ -253,7 +253,7 @@ public class ImageLoader implements IImageLoaderClient {
     }
 
     @Override
-    public void displayBlurImage(Context context, String url, int blurRadius, final IGetDrawableListener listener) {
+    public void displayBlurImage(Context context, String url, int blurRadius, final IGetDrawableListenerByCall listener) {
         if (client != null) {
             client.displayBlurImage(context, url, blurRadius, listener);
         }
@@ -302,14 +302,14 @@ public class ImageLoader implements IImageLoaderClient {
     }
 
     @Override
-    public void displayImageInResource(Context context, int resId, ImageView imageView, IBitmapTransformation... transformations) {
+    public void displayImageInResource(Context context, int resId, ImageView imageView, IBitmapTransformationD... transformations) {
         if (client != null) {
             client.displayImageInResource(context, resId, imageView, transformations);
         }
     }
 
     @Override
-    public void displayImageInResource(Fragment fragment, int resId,  ImageView imageView, IBitmapTransformation... transformations) {
+    public void displayImageInResource(Fragment fragment, int resId,  ImageView imageView, IBitmapTransformationD... transformations) {
         if (client != null) {
             client.displayImageInResource(fragment, resId, imageView, transformations);
         }
@@ -330,14 +330,14 @@ public class ImageLoader implements IImageLoaderClient {
     }
 
     @Override
-    public void displayImageInResource(Context context, int resId,  ImageView imageView, int defRes, IBitmapTransformation... transformations) {
+    public void displayImageInResource(Context context, int resId,  ImageView imageView, int defRes, IBitmapTransformationD... transformations) {
         if (client != null) {
             client.displayImageInResource(context, resId, imageView, defRes, transformations);
         }
     }
 
     @Override
-    public void displayImageInResource(Fragment fragment, int resId,  ImageView imageView, int defRes, IBitmapTransformation... transformations) {
+    public void displayImageInResource(Fragment fragment, int resId,  ImageView imageView, int defRes, IBitmapTransformationD... transformations) {
         if (client != null) {
             client.displayImageInResource(fragment, resId,  imageView, defRes, transformations);
         }

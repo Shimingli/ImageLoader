@@ -13,11 +13,11 @@ import android.widget.ImageView;
  * Created by shiming on 2016/10/26.
  */
 
-public class CircleBitmapTransformation implements IBitmapTransformation {
+public class CircleBitmapTransformationDD implements IBitmapTransformationD {
 
     private Context context;
 
-    public CircleBitmapTransformation(Context context) {
+    public CircleBitmapTransformationDD(Context context) {
         this.context = context;
     }
 

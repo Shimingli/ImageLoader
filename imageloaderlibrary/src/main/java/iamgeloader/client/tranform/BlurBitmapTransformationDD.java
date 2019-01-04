@@ -10,12 +10,12 @@ import android.widget.ImageView;
  */
 
 
-public class BlurBitmapTransformation implements IBitmapTransformation {
+public class BlurBitmapTransformationDD implements IBitmapTransformationD {
 
     private int radius;
     private Context context;
 
-    public BlurBitmapTransformation(Context context, int radius) {
+    public BlurBitmapTransformationDD(Context context, int radius) {
         this.radius = radius;
         this.context = context;
     }
@@ -61,7 +61,7 @@ public class BlurBitmapTransformation implements IBitmapTransformation {
 
     /**
      * 当设置过大的radius 容易内存溢出
-     * at iamgeloader.client.tranform.BlurBitmapTransformation.blur(BlurBitmapTransformation.java:80)
+     * at iamgeloader.client.tranform.BlurBitmapTransformationDD.blur(BlurBitmapTransformationDD.java:80)
      * @param source
      * @param radius
      * @return

@@ -10,7 +10,7 @@ import android.widget.ImageView;
  * 摒弃掉glide中使用的方法处理图片的方法 ，自定义transform的方法转化bitmap
  */
 
-public interface IBitmapTransformation {
+public interface IBitmapTransformationD {
     public Bitmap transform(Bitmap source, ImageView imageView);
     //context 需要被使用的地方持有
     public Context getContext();

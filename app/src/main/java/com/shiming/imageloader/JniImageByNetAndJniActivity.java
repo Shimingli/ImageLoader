@@ -9,7 +9,7 @@ import android.widget.ImageView;
 import com.shiming.imageloader.jnitest.JniUtils;
 
 import iamgeloader.client.ImageLoader;
-import iamgeloader.client.listener.IGetBitmapListener;
+import iamgeloader.client.listener.IGetBitmapListenerByCall;
 
 
 /**
@@ -35,7 +35,7 @@ public class JniImageByNetAndJniActivity extends AppCompatActivity {
 
     private void initData() {
         JniUtils.loadBlurImg(this,mUrl,mImageView_2,true);
-        ImageLoader.getInstance().getBitmapFromCache(this, mUrl, new IGetBitmapListener() {
+        ImageLoader.getInstance().getBitmapFromCache(this, mUrl, new IGetBitmapListenerByCall() {
             @Override
             public void onBitmap(Bitmap bitmap) {
                 mImageView_1.setImageBitmap(bitmap);
